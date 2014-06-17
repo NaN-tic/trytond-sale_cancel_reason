@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="sale_cancel_reason_view_form">
+            <field name="model">sale.cancel.reason</field>
+            <field name="type">form</field>
+            <field name="name">cancel_reason_form</field>
+        </record>
+        <record model="ir.ui.view" id="sale_cancel_reason_view_list">
+            <field name="model">sale.cancel.reason</field>
+            <field name="type">tree</field>
+            <field name="name">cancel_reason_list</field>
+        </record>
+        <record model="ir.action.act_window" id="act_sale_cancel_reason">
+            <field name="name">Cancel Reasons</field>
+            <field name="res_model">sale.cancel.reason</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_sale_cancel_reason_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_cancel_reason_view_list"/>
+            <field name="act_window" ref="act_sale_cancel_reason"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_sale_cancel_reason_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_cancel_reason_view_form"/>
+            <field name="act_window" ref="act_sale_cancel_reason"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_cancel_reason">
+            <field name="model"
+                search="[('model', '=', 'sale.cancel.reason')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_cancel_reason_admin">
+            <field name="model"
+                search="[('model', '=', 'sale.cancel.reason')]"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type">form</field>
+            <field name="name">sale_form</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="opportunity_view_form">
+            <field name="model">sale.opportunity</field>
+            <field name="type">form</field>
+            <field name="name">opportunity_form</field>
+            <field name="inherit" ref="sale_opportunity.opportunity_view_form"/>
+        </record>
+
+        <!-- Menus -->
+
+          <menuitem action="act_sale_cancel_reason"
+              id="menu_sale_cancel_reason" parent="sale.menu_configuration"
+              sequence="1"/>
+
+    </data>
+</tryton>

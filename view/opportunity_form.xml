@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='opportunity']/separator[@name='lost_reason']" position="replace"/>
+    <xpath expr="/form/notebook/page[@id='opportunity']/field[@name='lost_reason']" position="replace"/>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Lost reason" id="lost_reason" col="2">
+            <label name="lost_reason_type"/>
+            <field name="lost_reason_type"/>
+            <separator name="lost_reason" colspan="2"/>
+            <field name="lost_reason" colspan="2"/>
+        </page>
+    </xpath>
+
+</data>

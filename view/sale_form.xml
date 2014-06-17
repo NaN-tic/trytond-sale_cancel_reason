@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Cancel reason" id="cancel_reason" col="2">
+            <label name="cancel_reason"/>
+            <field name="cancel_reason"/>
+            <separator name="cancel_description" colspan="2"/>
+            <field name="cancel_description" colspan="2"/>
+        </page>
+    </xpath>
+</data>

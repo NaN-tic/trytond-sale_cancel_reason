@@ -1,0 +1,71 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.cancel.reason,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:sale.cancel.reason,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:sale.cancel.reason,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:sale.cancel.reason,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.cancel.reason,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.cancel.reason,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:sale.cancel.reason,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:sale.opportunity,lost_reason_type:"
+msgid "Lost Reason"
+msgstr "Motivos perdida"
+
+msgctxt "field:sale.sale,cancel_description:"
+msgid "Cancel Description"
+msgstr "Descripción cancel·lación"
+
+msgctxt "field:sale.sale,cancel_reason:"
+msgid "Cancel Reason"
+msgstr "Motivo cancelación"
+
+msgctxt "model:ir.action,name:act_sale_cancel_reason"
+msgid "Cancel Reasons"
+msgstr "Motivos cancelación"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_cancel_reason"
+msgid "Cancel Reasons"
+msgstr "Motivos cancelación"
+
+msgctxt "model:sale.cancel.reason,name:"
+msgid "Sale Cancel Reason"
+msgstr "Motivos cancelación ventas"
+
+msgctxt "view:sale.cancel.reason:"
+msgid "Cancel Reason"
+msgstr "Motivo cancelación"
+
+msgctxt "view:sale.cancel.reason:"
+msgid "Cancel Reasons"
+msgstr "Motivos cancelación"
+
+msgctxt "view:sale.opportunity:"
+msgid "Lost reason"
+msgstr "Motivos perdida"
+
+msgctxt "view:sale.sale:"
+msgid "Cancel reason"
+msgstr "Motivo cancelación"
