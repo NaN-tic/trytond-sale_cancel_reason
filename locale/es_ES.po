@@ -36,7 +36,7 @@ msgstr "Motivos perdida"
 
 msgctxt "field:sale.sale,cancel_description:"
 msgid "Cancel Description"
-msgstr "Descripción cancel·lación"
+msgstr "Descripción cancelación"
 
 msgctxt "field:sale.sale,cancel_reason:"
 msgid "Cancel Reason"
