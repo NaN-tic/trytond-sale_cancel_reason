@@ -48,14 +48,12 @@
 
         <record model="ir.ui.view" id="sale_view_form">
             <field name="model">sale.sale</field>
-            <field name="type">form</field>
             <field name="name">sale_form</field>
             <field name="inherit" ref="sale.sale_view_form"/>
         </record>
 
         <record model="ir.ui.view" id="opportunity_view_form">
             <field name="model">sale.opportunity</field>
-            <field name="type">form</field>
             <field name="name">opportunity_form</field>
             <field name="inherit" ref="sale_opportunity.opportunity_view_form"/>
         </record>
