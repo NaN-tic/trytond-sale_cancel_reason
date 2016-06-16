@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <tryton>
     <data>
-
         <record model="ir.ui.view" id="sale_cancel_reason_view_form">
             <field name="model">sale.cancel.reason</field>
             <field name="type">form</field>
@@ -59,10 +58,8 @@
         </record>
 
         <!-- Menus -->
-
-          <menuitem action="act_sale_cancel_reason"
-              id="menu_sale_cancel_reason" parent="sale.menu_configuration"
-              sequence="1"/>
-
+        <menuitem action="act_sale_cancel_reason"
+            id="menu_sale_cancel_reason" parent="sale.menu_configuration"
+            sequence="1"/>
     </data>
 </tryton>
