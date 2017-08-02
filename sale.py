@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['CancelReason', 'Sale', 'Opportunity']
 __metaclass__ = PoolMeta
@@ -18,16 +19,23 @@ class Sale:
     __name__ = 'sale.sale'
     cancel_reason = fields.Many2One('sale.cancel.reason', 'Cancel Reason',
         states={
-            'required': Eval('state') == 'cancel',
+            'required': ((Eval('state') == 'cancel')
+                & ~Eval('context', {}).get('sale_force_cancel', False)),
             'readonly': Eval('state') == 'cancel',
             },
         depends=['state'])
     cancel_description = fields.Text('Cancel Description',
         states={
-            'required': Eval('state') == 'cancel',
+            'required': ((Eval('state') == 'cancel')
+                & ~Eval('context', {}).get('sale_force_cancel', False)),
             'readonly': Eval('state') == 'cancel',
             },
         depends=['state'])
+
+    @classmethod
+    def delete(cls, sales):
+        with Transaction().set_context(sale_force_cancel=True):
+            super(Sale, cls).delete(sales)
 
 
 class Opportunity:
