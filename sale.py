@@ -1,12 +1,12 @@
-#The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 __all__ = ['CancelReason', 'Sale', 'Opportunity']
-__metaclass__ = PoolMeta
+
 
 
 class CancelReason(ModelSQL, ModelView):
@@ -17,6 +17,7 @@ class CancelReason(ModelSQL, ModelView):
 
 class Sale:
     __name__ = 'sale.sale'
+    __metaclass__ = PoolMeta
     cancel_reason = fields.Many2One('sale.cancel.reason', 'Cancel Reason',
         states={
             'required': ((Eval('state') == 'cancel')
@@ -40,6 +41,8 @@ class Sale:
 
 class Opportunity:
     __name__ = 'sale.opportunity'
+    __metaclass__ = PoolMeta
+
     lost_reason_type = fields.Many2One('sale.cancel.reason', 'Lost Reason',
         states={
             'required': Eval('state') == 'lost',
