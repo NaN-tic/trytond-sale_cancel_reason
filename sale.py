@@ -15,9 +15,8 @@ class CancelReason(ModelSQL, ModelView):
     name = fields.Char('Name', translate=True)
 
 
-class Sale:
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
-    __metaclass__ = PoolMeta
     cancel_reason = fields.Many2One('sale.cancel.reason', 'Cancel Reason',
         states={
             'required': ((Eval('state') == 'cancel')
@@ -39,9 +38,8 @@ class Sale:
             super(Sale, cls).delete(sales)
 
 
-class Opportunity:
+class Opportunity(metaclass=PoolMeta):
     __name__ = 'sale.opportunity'
-    __metaclass__ = PoolMeta
 
     lost_reason_type = fields.Many2One('sale.cancel.reason', 'Lost Reason',
         states={
