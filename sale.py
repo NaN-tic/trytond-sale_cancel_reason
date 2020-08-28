@@ -19,16 +19,16 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     cancel_reason = fields.Many2One('sale.cancel.reason', 'Cancel Reason',
         states={
-            'required': ((Eval('state') == 'cancel')
+            'required': ((Eval('state') == 'cancelled')
                 & ~Eval('context', {}).get('sale_force_cancel', False)),
-            'readonly': Eval('state') == 'cancel',
+            'readonly': Eval('state') == 'cancelled',
             },
         depends=['state'])
     cancel_description = fields.Text('Cancel Description',
         states={
-            'required': ((Eval('state') == 'cancel')
+            'required': ((Eval('state') == 'cancelled')
                 & ~Eval('context', {}).get('sale_force_cancel', False)),
-            'readonly': Eval('state') == 'cancel',
+            'readonly': Eval('state') == 'cancelled',
             },
         depends=['state'])
 
