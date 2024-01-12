@@ -22,15 +22,13 @@ class Sale(metaclass=PoolMeta):
             'required': ((Eval('state') == 'cancelled')
                 & ~Eval('context', {}).get('sale_force_cancel', False)),
             'readonly': Eval('state') == 'cancelled',
-            },
-        depends=['state'])
+            })
     cancel_description = fields.Text('Cancel Description',
         states={
             'required': ((Eval('state') == 'cancelled')
                 & ~Eval('context', {}).get('sale_force_cancel', False)),
             'readonly': Eval('state') == 'cancelled',
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def delete(cls, sales):
@@ -45,8 +43,7 @@ class Opportunity(metaclass=PoolMeta):
         states={
             'required': Eval('state') == 'lost',
             'readonly': Eval('state') == 'lost',
-            },
-        depends=['state'])
+            })
 
     @classmethod
     def __setup__(cls):
