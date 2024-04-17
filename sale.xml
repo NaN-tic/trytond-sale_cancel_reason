@@ -28,16 +28,14 @@
             <field name="act_window" ref="act_sale_cancel_reason"/>
         </record>
         <record model="ir.model.access" id="access_sale_cancel_reason">
-            <field name="model"
-                search="[('model', '=', 'sale.cancel.reason')]"/>
+            <field name="model">sale.cancel.reason</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_sale_cancel_reason_admin">
-            <field name="model"
-                search="[('model', '=', 'sale.cancel.reason')]"/>
+            <field name="model">sale.cancel.reason</field>
             <field name="group" ref="sale.group_sale_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
