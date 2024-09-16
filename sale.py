@@ -1,12 +1,9 @@
 # The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-
-__all__ = ['CancelReason', 'Sale', 'Opportunity']
-
 
 
 class CancelReason(ModelSQL, ModelView):
@@ -33,7 +30,22 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     def delete(cls, sales):
         with Transaction().set_context(sale_force_cancel=True):
-            super(Sale, cls).delete(sales)
+            super().delete(sales)
+
+    @classmethod
+    @ModelView.button
+    def cancel(cls, sales):
+        Opportunity = Pool().get('sale.opportunity')
+        to_save = []
+        for sale in sales:
+            if isinstance(sale.origin, Opportunity):
+                to_save.append(sale.origin)
+                if not sale.origin.lost_reason_type:
+                    sale.origin.lost_reason_type = sale.cancel_reason
+                if not sale.origin.lost_reason:
+                    sale.origin.lost_reason = sale.cancel_description
+        Opportunity.save(to_save)
+        super().cancel(sales)
 
 
 class Opportunity(metaclass=PoolMeta):
@@ -47,7 +59,7 @@ class Opportunity(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Opportunity, cls).__setup__()
+        super().__setup__()
         cls.lost_reason.states = {
             'required': Eval('state') == 'lost',
             'readonly': Eval('state') == 'lost',
