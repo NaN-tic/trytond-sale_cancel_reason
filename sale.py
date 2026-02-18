@@ -1,6 +1,7 @@
 # The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -35,6 +36,12 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     def cancel(cls, sales):
+        if Transaction().context.get('sale_force_cancel'):
+            description = gettext(
+                'sale_cancel_reason.msg_sale_cancelled_expired_quotation')
+            to_write = [sale for sale in sales if not sale.cancel_description]
+            if to_write:
+                cls.write(to_write, {'cancel_description': description})
         Opportunity = Pool().get('sale.opportunity')
         to_save = []
         for sale in sales:
@@ -46,6 +53,19 @@ class Sale(metaclass=PoolMeta):
                     sale.origin.lost_reason = sale.cancel_description
         Opportunity.save(to_save)
         super().cancel(sales)
+
+    @classmethod
+    def draft(cls, sales):
+        to_clear = [sale for sale in sales
+            if sale.state == 'cancelled' and sale.cancel_description]
+        super().draft(sales)
+        if to_clear:
+            cls.write(to_clear, {'cancel_description': None})
+
+    @classmethod
+    def cancel_expired_quotation(cls):
+        with Transaction().set_context(sale_force_cancel=True):
+            super().cancel_expired_quotation()
 
 
 class Opportunity(metaclass=PoolMeta):
