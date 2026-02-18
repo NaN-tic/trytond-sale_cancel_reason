@@ -1,34 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
-
-msgctxt "field:sale.cancel.reason,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:sale.cancel.reason,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:sale.cancel.reason,id:"
-msgid "ID"
-msgstr "Identificador"
 
 msgctxt "field:sale.cancel.reason,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:sale.cancel.reason,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:sale.cancel.reason,write_date:"
-msgid "Write Date"
-msgstr "Data modificació"
-
-msgctxt "field:sale.cancel.reason,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
 
 msgctxt "field:sale.opportunity,lost_reason_type:"
 msgid "Lost Reason"
@@ -46,13 +22,17 @@ msgctxt "model:ir.action,name:act_sale_cancel_reason"
 msgid "Cancel Reasons"
 msgstr "Motius de cancelació"
 
+msgctxt "model:ir.message,text:msg_sale_cancelled_expired_quotation"
+msgid "The sale has been cancelled because the quotation has expired"
+msgstr "La venda s'ha cancel·lat perquè el pressupost ha vençut"
+
 msgctxt "model:ir.ui.menu,name:menu_sale_cancel_reason"
 msgid "Cancel Reasons"
 msgstr "Motius de cancelació"
 
-msgctxt "model:sale.cancel.reason,name:"
+msgctxt "model:sale.cancel.reason,string:"
 msgid "Sale Cancel Reason"
-msgstr "Motiu cancel·lació vendes"
+msgstr "Motiu de la cancel·lació de la venda"
 
 msgctxt "view:sale.cancel.reason:"
 msgid "Cancel Reason"
